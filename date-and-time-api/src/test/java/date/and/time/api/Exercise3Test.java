@@ -8,7 +8,10 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -20,7 +23,7 @@ public class Exercise3Test {
         /**
          * Create a {@link LocalDateTime} of 2015-06-20 23:07:30 by using {@link LocalDateTime#of}
          */
-        LocalDateTime localDateTime = null;
+        LocalDateTime localDateTime = LocalDateTime.of(2015, Month.JUNE,20,23,07,30);
 
         assertThat(localDateTime.toString(), is("2015-06-20T23:07:30"));
     }
@@ -30,7 +33,7 @@ public class Exercise3Test {
         /**
          * Create a {@link LocalDateTime} of 2015-06-20 23:07:30 by using {@link LocalDateTime#parse}
          */
-        LocalDateTime localDateTime = null;
+        LocalDateTime localDateTime = LocalDateTime.parse("2015-06-20T23:07:30");
 
         assertThat(localDateTime.toString(), is("2015-06-20T23:07:30"));
     }
@@ -43,7 +46,8 @@ public class Exercise3Test {
          * Create a {@link LocalDateTime} from {@link ldt}
          * with first day of the next month and also truncated to hours.
          */
-        LocalDateTime localDateTime = null;
+
+        LocalDateTime localDateTime = ldt.with(TemporalAdjusters.firstDayOfNextMonth()).truncatedTo(ChronoUnit.HOURS);
 
         assertThat(localDateTime.toString(), is("2015-07-01T23:00"));
     }

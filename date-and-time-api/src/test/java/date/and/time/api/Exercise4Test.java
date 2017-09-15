@@ -20,7 +20,7 @@ public class Exercise4Test {
          * Create a {@link ZonedDateTime} with time of 2015-07-10 2:14:25.000 as Japan Standard Time
          * by using {@link ZonedDateTime#of} and {@link ZoneId#of}
          */
-        ZonedDateTime zonedDateTime = null;
+        ZonedDateTime zonedDateTime = ZonedDateTime.of();
 
         assertThat(zonedDateTime.toString(), is("2015-07-10T02:14:25+09:00[Asia/Tokyo]"));
     }
