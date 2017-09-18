@@ -60,8 +60,7 @@ public class Exercise3Test {
          * Create a {@link LocalDateTime} from {@link ldt} with 10 month later and 5 hours before
          * by using {@link LocalDateTime#plus*} or {@link LocalDateTime#minus*}
          */
-        LocalDateTime localDateTime = null;
-
+        LocalDateTime localDateTime = ldt.plusMonths(10).minusHours(5);
         assertThat(localDateTime.toString(), is("2016-04-18T18:07:30.500"));
     }
 
@@ -73,7 +72,7 @@ public class Exercise3Test {
          * Format {@link ldt} to a {@link String} as "2015_06_18_23_07_30"
          * by using {@link LocalDateTime#format} and {@link DateTimeFormatter#ofPattern}
          */
-        String strLdt = null;
+        String strLdt = ldt.format(DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss"));
 
         assertThat(strLdt, is("2015_06_18_23_07_30"));
     }
@@ -86,8 +85,8 @@ public class Exercise3Test {
          * Create a {@link LocalDate} and a {@link LocalTime} from {@link ldt}
          * by using {@link LocalDateTime#toLocalDate} and {@link LocalDateTime#toLocalTime}
          */
-        LocalDate localDate = null;
-        LocalTime localTime = null;
+        LocalDate localDate = ldt.toLocalDate();
+        LocalTime localTime = ldt.toLocalTime();
 
         assertThat(localDate.toString(), is("2015-06-18"));
         assertThat(localTime.toString(), is("23:07:30.500"));
@@ -102,8 +101,8 @@ public class Exercise3Test {
          * Create two equal {@link LocalDateTime} from {@link ld} and {@link lt}
          * by using {@link LocalDate#atTime} and {@link LocalTime#atDate}
          */
-        LocalDateTime localDateTime1 = null;
-        LocalDateTime localDateTime2 = null;
+        LocalDateTime localDateTime1 = ld.atTime(lt);
+        LocalDateTime localDateTime2 = lt.atDate(ld);
 
         assertThat(localDateTime1.toString(), is("2015-06-18T23:07:30.500"));
         assertThat(localDateTime1.isEqual(localDateTime2), is(true));
